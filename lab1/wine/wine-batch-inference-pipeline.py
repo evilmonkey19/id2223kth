@@ -48,7 +48,6 @@ def g():
     op_df = pd.DataFrame(op_dict)
     
     op_df.to_csv("./data.csv")
-    dataset_api.upload("./actual_iris.png", "Resources/images", overwrite=True)
 
     # upload data to resources for huggingface moinitoring
     dataset_api = project.get_dataset_api()
