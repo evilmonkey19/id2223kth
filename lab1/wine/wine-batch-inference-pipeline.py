@@ -32,19 +32,19 @@ def g():
     model_dir = model.download()
     model = joblib.load(model_dir + "/wine_model.pkl")
     
-    feature_view = fs.get_feature_group(name="wine", version=2)
+    feature_view = fs.get_feature_view(name="wine", version=2)
     batch_data = feature_view.get_batch_data()
     
     y_pred = model.predict(batch_data)
     seed_idx = 5
-    y_pred_ = y_pred[seed_idx].round().int() + 3
+    y_pred_ = y_pred[seed_idx].round().astype('int64') + 3
     
     iris_fg = fs.get_feature_group(name="wine", version=2)
     df = iris_fg.read()
-    actual_pred = df[seed_idx]['quality'].astype('int64')
+    actual_pred = df.iloc[seed_idx]['quality'].astype('int64')
     
-    op_dict = {'prediction': y_pred_,
-               'ground_truth': actual_pred}
+    op_dict = {'prediction': [y_pred_], 
+               'ground_truth': [actual_pred]}
     op_df = pd.DataFrame(op_dict)
     
     op_df.to_csv("./data.csv")
