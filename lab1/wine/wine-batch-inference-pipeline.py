@@ -1,12 +1,12 @@
 import os
 import modal
 
-LOCAL = True
+LOCAL = False
 
 if LOCAL == False:
    stub = modal.Stub()
-   hopsworks_image = modal.Image.debian_slim().pip_install(["hopsworks","joblib","seaborn","sklearn","dataframe-image", "xgboost"])
-   @stub.function(image=hopsworks_image, schedule=modal.Period(days=1), secret=modal.Secret.from_name("scalable-ml"))
+   hopsworks_image = modal.Image.debian_slim().pip_install(["hopsworks","joblib","seaborn","scikit-learn","dataframe-image", "xgboost"])
+   @stub.function(image=hopsworks_image, schedule=modal.Period(days=1), secret=modal.Secret.from_name("hopsworks.ai"))
    def f():
        g()
 
@@ -24,7 +24,7 @@ def g():
     import seaborn as sns
     import requests
     
-    project = hopsworks.login()
+    project = hopsworks.login(project="jayeshv")
     fs = project.get_feature_store()
     
     mr = project.get_model_registry()
