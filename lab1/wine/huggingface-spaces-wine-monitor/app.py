@@ -2,15 +2,11 @@ import gradio as gr
 from PIL import Image
 import hopsworks as hw
 
-project = hw.login()
+project = hw.login(project="jayeshv")
 fs = project.get_feature_store()
 
 dataset_api = project.get_dataset_api()
-dataset_api.download("Resources/data.csv")
-dataset_api.download("Resources/confusion_matrix.png")
 
-dataset_api.download("Resources/images/latest_iris.png")
-dataset_api.download("Resources/images/actual_iris.png")
 dataset_api.download("Resources/images/df_recent.png")
 dataset_api.download("Resources/images/confusion_matrix.png")
 
