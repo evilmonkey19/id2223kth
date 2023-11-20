@@ -19,26 +19,14 @@ print("Model Loaded...")
 def wine(type,
          fixed_acidity,
          volatile_acidity,
-         citric_acid,
-         residual_sugar,
-         chlorides,
-         free_sulfur_dioxide,
-         total_sulfur_dioxide,
-         density,
-         ph,
          sulphates,
-         alcohol):
+         alcohol,
+         density):
     print("Lets taste wine?")
     
-    df = pd.DataFrame([[type, fixed_acidity, volatile_acidity,
-                        citric_acid, residual_sugar,
-                        chlorides, free_sulfur_dioxide,
-                        total_sulfur_dioxide,
-                        density, ph, sulphates, alcohol]],
+    df = pd.DataFrame([[type, fixed_acidity, volatile_acidity, sulphates, alcohol, density]],
                       columns = ['type', 'fixed_acidity', 'volatile_acidity',
-                                 'citric_acid', 'residual_sugar', 'chlorides',
-                                 'free_sulfur_dioxide', 'total_sulfur_dioxide', 'density',
-                                 'ph', 'sulphates', 'alcohol'])
+                                 'sulphates', 'alcohol', 'density'])
     
     print("Predicting...")
     
