@@ -7,8 +7,8 @@ fs = project.get_feature_store()
 
 dataset_api = project.get_dataset_api()
 dataset_api.download("Resources/data.csv")
-dataset_api.download("Resources/images/df_recent.png")
-dataset_api.download("Resources/images/confusion_matrix.png")
+dataset_api.download("Resources/history.png")
+dataset_api.download("Resources/confusion_matrix.png")
 
 import pandas as pd
 df = pd.read_csv('data.csv')
@@ -17,10 +17,10 @@ with gr.Blocks() as demo:
     with gr.Row():
         with gr.Column():
             gr.Label("Today's Predicted Wine quality")
-            input_img = gr.Number(df['prediction'], elem_id="predicted-qual")
+            input_img = gr.Number(df.iloc[0]['prediction'], elem_id="predicted-qual")
         with gr.Column():
             gr.Label("Actual Wine Quality")
-            input_img = gr.Number(df['ground_truth'], elem_id="actual-qual")
+            input_img = gr.Number(df.iloc[0]['ground_truth'], elem_id="actual-qual")
     with gr.Row():
         with gr.Column():
             gr.Label("Past predictions")
@@ -28,3 +28,5 @@ with gr.Blocks() as demo:
         with gr.Column():
             gr.Label("Confusion Maxtrix with Historical Prediction Performance")
             input_img = gr.Image("confusion_matrix.png", elem_id="confusion-matrix")
+    
+demo.launch()
