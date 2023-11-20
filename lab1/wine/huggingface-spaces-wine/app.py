@@ -29,7 +29,7 @@ def wine(type,
                                  'sulphates', 'alcohol', 'density'])
     
     print("Predicting...")
-    
+    print(df.head())
     res = model.predict(df)
     print(res)
     
