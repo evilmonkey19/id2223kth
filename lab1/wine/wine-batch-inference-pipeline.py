@@ -1,7 +1,7 @@
 import os
 import modal
 
-LOCAL = False
+LOCAL = True
 
 if LOCAL == False:
    stub = modal.Stub()
@@ -82,8 +82,8 @@ def g():
     
     # if predictions.value_counts().count() == 3:
     results = confusion_matrix(predictions, labels)
-    df_cm = pd.DataFrame(results, [f'True {i}' for i in range(3, 9)],
-                        [f'Pred {i}' for i in range(3, 9)])
+    df_cm = pd.DataFrame(results, [f'True {i}' for i in range(2)],
+                        [f'Pred {i}' for i in range(2)])
     
     cm = sns.heatmap(df_cm, annot=True)
     fig = cm.get_figure()
