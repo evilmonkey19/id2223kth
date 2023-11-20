@@ -28,18 +28,18 @@ def g():
     fs = project.get_feature_store()
     
     mr = project.get_model_registry()
-    model = mr.get_model("wine_model", version=1)
+    model = mr.get_model("wine_model", version=2)
     model_dir = model.download()
     model = joblib.load(model_dir + "/wine_model.pkl")
     
-    feature_view = fs.get_feature_view(name="wine", version=2)
+    feature_view = fs.get_feature_view(name="wine", version=4)
     batch_data = feature_view.get_batch_data()
     
     y_pred = model.predict(batch_data)
     seed_idx = 5
-    y_pred_ = y_pred[seed_idx].round().astype('int64') + 3
+    y_pred_ = y_pred[seed_idx]
     
-    iris_fg = fs.get_feature_group(name="wine", version=2)
+    iris_fg = fs.get_feature_group(name="wine", version=4)
     df = iris_fg.read()
     actual_pred = df.iloc[seed_idx]['quality'].astype('int64')
     
@@ -54,7 +54,7 @@ def g():
     dataset_api.upload("data.csv", "Resources", overwrite=True)
     
     monitor_fg = fs.get_or_create_feature_group(name="wine_predictions",
-                                            version=1,
+                                            version=2,
                                             primary_key=["datetime"],
                                             description="Wine Quality Prediction/Outcome Monitoring"
                                             )
