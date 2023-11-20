@@ -1,7 +1,7 @@
 import os
 import modal
 
-LOCAL=False
+LOCAL=True
 
 if LOCAL == False:
     stub = modal.Stub("wine-daily")
@@ -30,7 +30,7 @@ def generate_wine():
                        columns=wine_df.columns)
 
     df['type'] = df['type'].astype('int64')
-    df['quality'] = df['quality'].astype('int64')   
+    df['quality'] = df['quality'].astype('int64')
     return df
 
 
@@ -59,7 +59,6 @@ def g():
     wine_df = get_random_wine()
     
     wine_fg = fs.get_feature_group(name="wine",version=2)
-    print(wine_fg)
     wine_fg.insert(wine_df)
 
 

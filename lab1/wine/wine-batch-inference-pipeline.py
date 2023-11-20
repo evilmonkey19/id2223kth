@@ -51,7 +51,7 @@ def g():
 
     # upload data to resources for huggingface moinitoring
     dataset_api = project.get_dataset_api()
-    dataset_api.upload("./data.csv", "Resources", overwrite=True)
+    dataset_api.upload("data.csv", "Resources", overwrite=True)
     
     monitor_fg = fs.get_or_create_feature_group(name="wine_predictions",
                                             version=1,
@@ -80,17 +80,17 @@ def g():
     predictions = history_df[['prediction']]
     labels = history_df[['label']]
     
-    if predictions.value_counts().count() == 3:
-        results = confusion_matrix(predictions, labels)
-        df_cm = pd.DataFrame(results, [f'True {i}' for i in range(3, 9)],
-                            [f'Pred {i}' for i in range(3, 9)])
-        
-        cm = sns.heatmap(df_cm, annot=True)
-        fig = cm.get_figure()
-        fig.savefig("./confusion_matrix.png")
-        dataset_api.upload("./confusion_matrix.png", "Resources", overwrite=True)
-    else:
-        print("You need 3 different flower predictions to create the confusion matrix.")
+    # if predictions.value_counts().count() == 3:
+    results = confusion_matrix(predictions, labels)
+    df_cm = pd.DataFrame(results, [f'True {i}' for i in range(3, 9)],
+                        [f'Pred {i}' for i in range(3, 9)])
+    
+    cm = sns.heatmap(df_cm, annot=True)
+    fig = cm.get_figure()
+    fig.savefig("./confusion_matrix.png")
+    dataset_api.upload("./confusion_matrix.png", "Resources", overwrite=True)
+    # else:
+    #     print("You need 3 different flower predictions to create the confusion matrix.")
 
 
 if __name__ == "__main__":
