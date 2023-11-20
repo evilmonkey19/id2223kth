@@ -43,7 +43,7 @@ def g():
     df = iris_fg.read()
     actual_pred = df.iloc[seed_idx]['quality'].astype('int64')
     
-    op_dict = {'prediction': [y_pred_], 
+    op_dict = {'prediction': [y_pred_],
                'ground_truth': [actual_pred]}
     op_df = pd.DataFrame(op_dict)
     
