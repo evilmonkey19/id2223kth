@@ -22,7 +22,7 @@ def generate_wine():
     project = hopsworks.login(project="jayeshv")
     fs = project.get_feature_store()
 
-    wine_fg = fs.get_feature_group(name="wine", version=2)
+    wine_fg = fs.get_feature_group(name="wine", version=4)
     wine_df = pd.DataFrame(wine_fg.read())
 
     indices = np.random.choice(wine_df.index, size=(1, wine_df.shape[1]), replace=True)
@@ -58,9 +58,8 @@ def g():
 
     wine_df = get_random_wine()
     
-    wine_fg = fs.get_feature_group(name="wine",version=2)
+    wine_fg = fs.get_feature_group(name="wine", version=4)
     wine_fg.insert(wine_df)
-
 
 if __name__ == "__main__":
     if LOCAL == True:
