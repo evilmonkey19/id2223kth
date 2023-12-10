@@ -16,7 +16,7 @@
 1) Data Augmentation: Perturbing an audio file with noise or overlapping multiple audios might also benefit us. Masking Frequency might also lead
                       to interesting results.
 
-2) Adding Meta-training tasks: For exmaple predicting the fequency of the audio and other meta tasks surrounding an audio file might affect it densely.
+2) Adding Meta-training tasks: For example predicting the fequency of the audio and other meta tasks surrounding an audio file might affect it densely.
 
 
    
