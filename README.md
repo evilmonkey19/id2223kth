@@ -35,3 +35,9 @@ The HuggingFace-spaces folder contains the files to deploy the model in HuggingF
 - huggingface-spaces-iris-monitor is the folder to deploy the model in HuggingFace.co and make the monitoring of the predictions in the pipeline feature daily.
 
 For the wine project is quite similar the structure.
+
+
+## Project 1 - Iris & Wine prediction
+
+[Whisper-Soundcloud](https://huggingface.co/spaces/ID2223/whisper-soundcloud)
+[Whisper-Online](https://huggingface.co/spaces/ID2223/whisper-online)
