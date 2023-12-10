@@ -2,7 +2,7 @@
 
 ### Model centric Way:
 1) Network Architecture: We would suggest the use of wider/deeper networks with transformers/attention based mechanism, given their success
-                         across different sequential tasks. If enabled with more compute. We would like to larger whisper models.
+                         across different sequential tasks. If enabled with more compute. We would like to try larger whisper models.
 2) Hyperparameter: Bigger batches mean the model processes data faster during training, helping it converge quicker. However, we don't want to
                    rush things and hit just any local optimum. Different optima have different precision levels, so adjusting the batch
                    size helps us find the sweet spot with the best system performance. Starting with a larger batch size early on for speedy convergence,
