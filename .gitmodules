@@ -1,0 +1,6 @@
+[submodule "lab2/whisper-soundcloud"]
+	path = lab2/whisper-soundcloud
+	url = https://huggingface.co/spaces/ID2223/whisper-soundcloud
+[submodule "lab2/whisper-online"]
+	path = lab2/whisper-online
+	url = https://huggingface.co/spaces/ID2223/whisper-online
